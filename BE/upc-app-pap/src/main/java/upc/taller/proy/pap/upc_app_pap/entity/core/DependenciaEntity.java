@@ -1,5 +1,6 @@
 package upc.taller.proy.pap.upc_app_pap.entity.core;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -26,7 +27,7 @@ public class DependenciaEntity extends Auditoria {
     private String sigla;
 
     // List Object
-
+    @JsonIgnore
     @OneToMany(mappedBy = "dependencia")
     private List<PersonaEntity> listaPersona;
 

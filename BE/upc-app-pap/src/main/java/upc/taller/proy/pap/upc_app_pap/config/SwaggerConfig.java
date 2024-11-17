@@ -12,7 +12,7 @@ public class SwaggerConfig {
     @Bean
     OpenAPI openAPI() {
         return new OpenAPI()
-                .info(new Info().title("API de servicio de gestión de papeletas")
+                .info(new Info().title("API de servicio de gestión de papeletaaas")
                         .description("Servicio de gestión de Papeletas")
                         .version("1.0")
                 );
