@@ -27,10 +27,14 @@ public class DependenciaEntity extends Auditoria {
     private String sigla;
 
     // List Object
-    @JsonIgnore
+  /*  @JsonIgnore
     @OneToMany(mappedBy = "dependencia")
-    private List<PersonaEntity> listaPersona;
+    private List<PersonaEntity> listaPersona;*/
 
 //    @OneToOne(mappedBy = "persona")
 //    private UsuarioEntity usuario;
+
+    @JsonIgnore
+    @ManyToMany(mappedBy = "listaDependencia")
+    private List<PersonaEntity> listaPersona;
 }

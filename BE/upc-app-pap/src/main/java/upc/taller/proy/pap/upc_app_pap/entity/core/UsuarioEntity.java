@@ -1,5 +1,6 @@
 package upc.taller.proy.pap.upc_app_pap.entity.core;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -22,6 +23,8 @@ public class UsuarioEntity extends Auditoria {
     private String usuario;
     private String clave;
 
+
+    @JsonIgnore
     @OneToOne
     @JoinColumn(name = "persona_id", referencedColumnName = "persona_id", nullable = false)
     private PersonaEntity persona;

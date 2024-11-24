@@ -1,11 +1,14 @@
 package upc.taller.proy.pap.upc_app_pap.entity.core;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import upc.taller.proy.pap.upc_app_pap.entity.utils.Auditoria;
+
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -21,5 +24,9 @@ public class EspecialidadEntity extends Auditoria {
     private  Long especialidadId;
     private String descripcion;
     private String abreviatura;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "especialidad")
+    private List<PersonaEntity> listaPersona;
 
 }

@@ -14,6 +14,7 @@ export class DependenciaService {
   variable1 :string = "123"
 
   Listar(): Observable<Dependencia[]> {
+    console.log("Servicio/Listar");
     const url = `${this.endpoint}/dependencias/Listar`;
     return this.httpClient.get<Dependencia[]>(url);
   }

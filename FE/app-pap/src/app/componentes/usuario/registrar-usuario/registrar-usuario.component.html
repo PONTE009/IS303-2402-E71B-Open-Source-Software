@@ -1,0 +1,89 @@
+<div class="container py-4">
+  <div class="card">
+    <div class="card-header">
+      <h5>Registrar usuario</h5>
+    </div>
+    <div class="card-body">
+      <div class="card-title fw-bold">Datos personales</div>
+
+      <div [formGroup]="frmUsuario">
+        <div class="row">
+          <div class="col-4">
+            <label class="form-label">Primer Nombre</label>
+            <input type="text" class="form-control" placeholder="" formControlName="primerNombre">
+          </div>
+          <div class="col-4">
+            <label class="form-label">Segundo Nombre</label>
+            <input type="text" class="form-control" placeholder="" formControlName="segundoNombre">
+          </div>
+          <div class="col-4">
+            <label class="form-label">Apellido Paterno</label>
+            <input type="text" class="form-control" placeholder="" formControlName="apellidoPaterno">
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-4">
+            <label class="form-label">Apellido Materno</label>
+            <input type="text" class="form-control" placeholder="" formControlName="apellidoMaterno">
+          </div>
+          <div class="col-4">
+            <label class="form-label">Tipo persona</label>
+            <select class="form-select" formControlName="tipoPersonaId">
+              <option disabled>SELECCIONE</option>
+              <option *ngFor="let tipo of listaTipoPersona" [value]="tipo.id">{{tipo.value}}</option>
+            </select>
+          </div>
+          <div class="col-4">
+            <label class="form-label">Grado</label>
+            <select class="form-select" formControlName="gradoId">
+              <option disabled>SELECCIONE</option>
+              <option *ngFor="let grado of listaGrado" [value]="grado.id" >{{grado.value}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-4">
+            <label class="form-label">Especialidad</label>
+            <select class="form-select" formControlName="especialidadId">
+              <option disabled>SELECCIONE</option>
+              <option *ngFor="let especialidad of listaEspecialidad" [value]="especialidad.id">{{ especialidad.value}}</option>
+            </select>
+          </div>
+          <div class="col-8">
+            <label class="form-label">Dependencia</label>
+            <select class="form-select" multiple formControlName="dependenciaId">
+              <option *ngFor="let dependecia of listaDependencia" [value]="dependecia.dependenciaId"> {{dependecia.descripcion}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="card-title fw-bold">Datos de usuarios</div>
+
+        <div class="row">
+          <div class="col-4">
+            <label class="form-label">Usuario</label>
+            <input type="text" class="form-control" placeholder="" formControlName="usuario">
+          </div>
+          <div class="col-4">
+            <label class="form-label">Clave</label>
+            <input type="password" class="form-control" placeholder="" formControlName="clave">
+          </div>
+        </div>
+
+        <div class="row mt-2">
+          <div class="col-12 text-end">
+            <button type="button" class="btn btn-primary mx-1" (click)="Grabar()">Guardar</button>
+            <button type="button" class="btn btn-secondary">Cancelar</button>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--
+
+"usuario": "sandro",
+"clave": "123456"
+-->
