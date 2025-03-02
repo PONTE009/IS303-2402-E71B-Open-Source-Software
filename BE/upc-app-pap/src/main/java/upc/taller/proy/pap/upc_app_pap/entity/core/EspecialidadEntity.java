@@ -6,14 +6,17 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 import upc.taller.proy.pap.upc_app_pap.entity.utils.Auditoria;
 
 import java.util.List;
 
-@AllArgsConstructor
-@NoArgsConstructor
+
 @Setter
 @Getter
+@SuperBuilder
+//@AllArgsConstructor
+@NoArgsConstructor(force = true)
 @Entity(name = "EspecialidadEntity")
 @Table(name = "tbl_especialidad", schema = "mae")
 public class EspecialidadEntity extends Auditoria {
@@ -25,8 +28,8 @@ public class EspecialidadEntity extends Auditoria {
     private String descripcion;
     private String abreviatura;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "especialidad")
+    //@JsonIgnore
+    @OneToMany(mappedBy = "especialidad", fetch = FetchType.EAGER)
     private List<PersonaEntity> listaPersona;
 
 }

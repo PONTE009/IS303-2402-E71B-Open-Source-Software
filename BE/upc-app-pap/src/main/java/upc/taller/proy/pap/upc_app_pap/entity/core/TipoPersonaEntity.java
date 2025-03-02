@@ -6,12 +6,14 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 import upc.taller.proy.pap.upc_app_pap.entity.utils.Auditoria;
 
 import java.util.List;
 
-@AllArgsConstructor
-@NoArgsConstructor
+//@AllArgsConstructor
+//@NoArgsConstructor
+@SuperBuilder
 @Setter
 @Getter
 @Entity(name = "TipoPersonaEntity")

@@ -4,6 +4,7 @@ package upc.taller.proy.pap.upc_app_pap.entity.ejemplo;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 import upc.taller.proy.pap.upc_app_pap.entity.utils.Auditoria;
 
 import java.util.Date;
@@ -11,6 +12,7 @@ import java.util.Date;
 
 @Setter
 @Getter
+@SuperBuilder
 @Entity(name = "LibrosEntity")
 @Table(name = "tbl_libro", schema = "mae")
 public class LibrosEntity extends Auditoria {

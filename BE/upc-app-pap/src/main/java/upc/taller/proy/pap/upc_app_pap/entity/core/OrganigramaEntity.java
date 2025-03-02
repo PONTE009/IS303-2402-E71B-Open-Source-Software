@@ -1,6 +1,5 @@
 package upc.taller.proy.pap.upc_app_pap.entity.core;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,6 +8,7 @@ import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 import upc.taller.proy.pap.upc_app_pap.entity.utils.Auditoria;
 
+import java.util.ArrayList;
 import java.util.List;
 
 //@AllArgsConstructor
@@ -16,18 +16,16 @@ import java.util.List;
 @SuperBuilder
 @Setter
 @Getter
-@Entity(name = "GradoEntity")
-@Table(name = "tbl_grado", schema = "mae")
-public class GradoEntity extends Auditoria {
-
+@Entity(name = "OrganigramaEntity")
+@Table(name = "tbl_organigrama", schema = "mae")
+public class OrganigramaEntity extends Auditoria {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "grado_id")
-    private  Long gradoId;
+    @Column(name = "organigrama_id")
+    private  Long organigramaId;
     private String descripcion;
-    private String abreviatura;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "grado")
-    private List<PersonaEntity> listaPersona;
+    @OneToMany(mappedBy = "organigrama", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<PersonaOrganigramaEntity> listaPersona = new ArrayList<>();
+
 }

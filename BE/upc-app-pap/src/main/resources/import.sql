@@ -8,3 +8,5 @@ INSERT INTO mae.tbl_especialidad(activo, fecha_modifica, fecha_registro, usuario
 INSERT INTO mae.tbl_grado(activo, fecha_modifica, fecha_registro, usuario_registro, abreviatura, descripcion, usuario_modifica)VALUES(1, NULL, '0024-11-23 00:00:00.000', 'ADMIN', 'OM1', 'OFICIAL DE MAR PRIMERO', NULL);
 
 INSERT INTO mae.tbl_tipo_persona(activo, fecha_modifica, fecha_registro, usuario_registro, abreviatura, descripcion, usuario_modifica)VALUES(1, NULL, '2024-11-23 00:00:00.000', 'admin', 'SUB', 'SUBA  LTERNO', NULL);
+
+INSERT INTO mae.tbl_organigrama (activo, fecha_modifica, fecha_registro, usuario_registro, descripcion, usuario_modifica) VALUES(NULL, NULL, '2025-03-01 00:00:00.000', 'admin', 'ORGANIGRAMA 01', NULL);

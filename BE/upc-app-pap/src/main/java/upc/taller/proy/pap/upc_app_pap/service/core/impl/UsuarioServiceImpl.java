@@ -33,21 +33,39 @@ public class UsuarioServiceImpl implements UsuarioService {
             List<Integer> listaDependenciaIds = request.getPersona().getListaDependenciasIds();
 
             for(Integer items : listaDependenciaIds){
-                DependenciaEntity eDependencia = new DependenciaEntity();
-                eDependencia.setDependenciaId(items.longValue());
+                //DependenciaEntity eDependencia = new DependenciaEntity();
+                //eDependencia.setDependenciaId(items.longValue());
+
+                DependenciaEntity eDependencia = DependenciaEntity.builder()
+                                .dependenciaId(items.longValue())
+                                        .build();
+
                 listaDependencia.add(eDependencia);
             }
 
             request.getPersona().setListaDependencia(listaDependencia);
 
-            TipoPersonaEntity eTipoPersona = new TipoPersonaEntity();
-            eTipoPersona.setTipoPersonaId(request.getPersona().getTipoPersonaId());
+//            TipoPersonaEntity eTipoPersona = new TipoPersonaEntity();
+//            eTipoPersona.setTipoPersonaId(request.getPersona().getTipoPersonaId());
 
-            GradoEntity eGrado = new GradoEntity();
-            eGrado.setGradoId(request.getPersona().getGradoId());
+            TipoPersonaEntity eTipoPersona = TipoPersonaEntity.builder()
+                            .tipoPersonaId(request.getPersona().getTipoPersonaId())
+                    .build();
 
-            EspecialidadEntity eEspecialidad = new EspecialidadEntity();
-            eEspecialidad.setEspecialidadId(request.getPersona().getEspecialidadId());
+
+
+//            GradoEntity eGrado = new GradoEntity();
+//            eGrado.setGradoId(request.getPersona().getGradoId());
+
+            GradoEntity eGrado = GradoEntity.builder()
+                    .gradoId(request.getPersona().getGradoId()).build();
+
+//            EspecialidadEntity eEspecialidad = new EspecialidadEntity();
+//            eEspecialidad.setEspecialidadId(request.getPersona().getEspecialidadId());
+
+            EspecialidadEntity eEspecialidad = EspecialidadEntity.builder()
+                            .especialidadId(request.getPersona().getEspecialidadId())
+                                    .build();
 
 
             request.getPersona().setTipopPersona(eTipoPersona);
@@ -70,6 +88,13 @@ public class UsuarioServiceImpl implements UsuarioService {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public Boolean Eliminar(Integer personaId) {
+
+        personaRepository.deleteById(personaId.longValue());
+        return true;
     }
 
 }

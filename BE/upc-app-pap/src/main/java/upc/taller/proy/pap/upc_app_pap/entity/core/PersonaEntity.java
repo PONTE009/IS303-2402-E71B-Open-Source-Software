@@ -6,12 +6,15 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 import upc.taller.proy.pap.upc_app_pap.entity.utils.Auditoria;
 
+import java.util.ArrayList;
 import java.util.List;
 
-@AllArgsConstructor
+//@AllArgsConstructor
 @NoArgsConstructor
+@SuperBuilder
 @Setter
 @Getter
 @Entity(name = "PersonaEntity")
@@ -45,7 +48,7 @@ public class PersonaEntity extends Auditoria {
     private DependenciaEntity dependencia;*/
 
     @JsonIgnore
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.REMOVE)
     @JoinTable(
             name = "tbl_persona_dependencia", schema = "pap",
             joinColumns = @JoinColumn(name = "persona_id", nullable = false),
@@ -71,11 +74,18 @@ public class PersonaEntity extends Auditoria {
 
     @JsonIgnore
     @ManyToOne
-    @JoinColumn(name = "tipo_persona_id", referencedColumnName = "tipo_persona_id",nullable = false)
+    @JoinColumn(name = "tipo_persona_id", referencedColumnName = "tipo_persona_id",nullable = true)
     private TipoPersonaEntity tipopPersona;
 
     @Transient
     private Long TipoPersonaId;
 
+    @JsonIgnore
+    @OneToOne(mappedBy = "persona", cascade = CascadeType.ALL,orphanRemoval = true)
+    private UsuarioEntity usuario;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "persona", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<PersonaOrganigramaEntity> listaOrganigrama = new ArrayList<>();
 
 }

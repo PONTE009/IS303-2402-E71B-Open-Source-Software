@@ -27,4 +27,11 @@ public class UsuarioController {
         }
     }
 
+    @DeleteMapping("/Eliminar/{personaId}")
+    public ResponseEntity<Boolean> Eliminar(@PathVariable Integer personaId){
+
+        Boolean response = usuarioService.Eliminar(personaId);
+        return ResponseEntity.ok(response);
+    }
+
 }
